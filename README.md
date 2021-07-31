@@ -30,4 +30,42 @@ Learn mongodb from the basics
  - `db.dropDatabase()` :To delete a database.
  - `db` : For show the current DB.
  - `db.createCollection('collectionName')` : For create new collection inside the current database.
- 
+
+ - Data inserted into collections. 
+  `db.<collectionName>.insert({<valueObjects>})`
+
+  eg: Insert data into  posts collection like,
+
+      ```
+          db.posts.insert({
+          title: 'Post One',
+          body: 'Body of the post one',
+          category: 'news',
+          likes: 4,
+          tags: ['news', 'events'],
+          user: {
+          name: 'John',
+          status: 'author' 
+          },
+          date: Date()
+          })
+      ```
+
+- For insert multiple documents at a time into a collections,
+  ` db.<collectionName>.insertMany([ {<valueObjects>}, {<ValueObjects>}, {<ValueObject>])`
+
+  eg. Insert multiple documents into post collection
+    
+    ```
+    db.post.insertMany([
+      { title:'post two', likes: 5, body: 'Body of the post two'},
+      { title:'post three', likes: 7, body: 'Body of the post three'},
+      { title:'post four', likes: 3, body: 'Body of the post four'},
+      ])
+    ```
+- `db.<collectionName>.find()` : For getting all the documents inside a collection.
+- `db.<collectionName>.find().pretty()` : For getting all documents in a collection in a formated form. including an object inside find method helps to findout documents with some specific condition.
+ eg. to findout all the documents with category news you can use `db.posts.find({ category :'news' })` command.
+- `db.<collectionName>.find().sort(<sortingoptions>).pretty()`: For sorting alll documents with a specific key.
+ eg. to sort all the documents in posts collection using title(ascending order). for ascending order use 1 and decending order use -1.
+  `b.posts.find().sort({ title: 1 }).pretty()`
