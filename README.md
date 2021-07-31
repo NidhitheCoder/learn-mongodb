@@ -63,9 +63,24 @@ Learn mongodb from the basics
       { title:'post four', likes: 3, body: 'Body of the post four'},
       ])
     ```
+
 - `db.<collectionName>.find()` : For getting all the documents inside a collection.
+
 - `db.<collectionName>.find().pretty()` : For getting all documents in a collection in a formated form. including an object inside find method helps to findout documents with some specific condition.
  eg. to findout all the documents with category news you can use `db.posts.find({ category :'news' })` command.
+
 - `db.<collectionName>.find().sort(<sortingoptions>).pretty()`: For sorting alll documents with a specific key.
  eg. to sort all the documents in posts collection using title(ascending order). for ascending order use 1 and decending order use -1.
   `b.posts.find().sort({ title: 1 }).pretty()`
+
+- For count objects  with count() method.
+  usage eg: `db.posts.find({ category: 'news'}).pretty().count()`.
+
+- For getting limited number of documents use limit().
+  usage eg: `db.posts.find().limit(2).pretty()`
+
+- using forEach function
+  eg usage: `db.posts.find().forEach(doc => print('Blog post:' + doc.title ))`
+
+- For find one document
+ eg usage: `db.posts.findOne({ category: 'news'})`
