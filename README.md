@@ -31,6 +31,8 @@ Learn mongodb from the basics
  - `db` : For show the current DB.
  - `db.createCollection('collectionName')` : For create new collection inside the current database.
 
+ ### Insert documents
+
  - Data inserted into collections. 
   `db.<collectionName>.insert({<valueObjects>})`
 
@@ -64,6 +66,8 @@ Learn mongodb from the basics
       ])
     ```
 
+### Get documents
+
 - `db.<collectionName>.find()` : For getting all the documents inside a collection.
 
 - `db.<collectionName>.find().pretty()` : For getting all documents in a collection in a formated form. including an object inside find method helps to findout documents with some specific condition.
@@ -84,3 +88,13 @@ Learn mongodb from the basics
 
 - For find one document
  eg usage: `db.posts.findOne({ category: 'news'})`
+
+ ### Update documents
+
+- `db.posts.update({ title: 'post two' }, { title: 'Post Two', body: 'New post Body of second post', date: Date(), category: 'Sports' })` - Update document with title post to the next given object 
+ 
+- using { upsert: true }  helps to update if find, and not then insert the document to the collection.
+  usage: `db.posts.update({ title: 'post five' }, { title: 'Post Five', body: 'New post Body of second post', date: Date() }, {upsert: true})`
+
+- Using $set for update and change only the given key and the value  when update.
+  Usage example`db.posts.update({ _id: ObjectId("61059441aa65edb59278bead") }, {$set :{ body: 'Post Two body', category: 'Technlogy'}})`
