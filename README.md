@@ -59,7 +59,7 @@ Learn mongodb from the basics
   eg. Insert multiple documents into post collection
     
     ```
-    db.post.insertMany([
+    db.posts.insertMany([
       { title:'post two', likes: 5, body: 'Body of the post two'},
       { title:'post three', likes: 7, body: 'Body of the post three'},
       { title:'post four', likes: 3, body: 'Body of the post four'},
@@ -89,6 +89,16 @@ Learn mongodb from the basics
 - For find one document
  eg usage: `db.posts.findOne({ category: 'news'})`
 
+
+- Using $elemMatch for sorting using inner items
+  usage example: db.posts.find({
+    comments: {
+      $elemMatch: {
+        user: 'Mary'
+      }
+    }
+  })
+
  ### Update documents
 
 - `db.posts.update({ title: 'post two' }, { title: 'Post Two', body: 'New post Body of second post', date: Date(), category: 'Sports' })` - Update document with title post to the next given object 
@@ -98,3 +108,32 @@ Learn mongodb from the basics
 
 - Using $set for update and change only the given key and the value  when update.
   Usage example`db.posts.update({ _id: ObjectId("61059441aa65edb59278bead") }, {$set :{ body: 'Post Two body', category: 'Technlogy'}})`
+
+- Using $inc for implement increament operator.
+  usage example: `db.posts.update({ title: 'Post Two' }, { $inc: {likes: 2 } })`
+
+- Using $rename for change name of a key inside a document.
+  usage example : `db.posts.update({ title: 'Post Two' }, { $rename: { likes: 'views' } })`
+
+  ### Delete Documents
+- For deleting a document. db.posts.remove({ title: 'post two' })
+
+db.posts.update({ title: 'post three' }, 
+{
+  $set: {
+    comments: [ 
+      {
+        name: 'Mary',
+        comment: 'Awesome',
+        date: Date()
+      },
+      {
+        name: 'Smith',
+        comment: 'Beautiful',
+        date: Date()
+      }
+
+    ]
+  }
+})
+
