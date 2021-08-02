@@ -91,13 +91,13 @@ Learn mongodb from the basics
 
 
 - Using $elemMatch for sorting using inner items
-  usage example: db.posts.find({
+  usage example: ```db.posts.find({
     comments: {
       $elemMatch: {
         user: 'Mary'
       }
     }
-  })
+  })```
 
  ### Update documents
 
@@ -116,24 +116,14 @@ Learn mongodb from the basics
   usage example : `db.posts.update({ title: 'Post Two' }, { $rename: { likes: 'views' } })`
 
   ### Delete Documents
-- For deleting a document. db.posts.remove({ title: 'post two' })
+- For deleting a document. `db.posts.remove({ title: 'post two' })`
 
-db.posts.update({ title: 'post three' }, 
-{
-  $set: {
-    comments: [ 
-      {
-        name: 'Mary',
-        comment: 'Awesome',
-        date: Date()
-      },
-      {
-        name: 'Smith',
-        comment: 'Beautiful',
-        date: Date()
-      }
+### misc
+- To create an index: `db.posts.createIndex({ title: 'text' })`
+- To search a text : `db.posts.find({ $text: { $search: "\"Post T\"" } }).pretty()`
+- To using conditions(greaterthan and lessthan): `db.posts.find({ likes: { $gt: 3 } })`
+  $gt: greaterthan, 
+  $gte: greaterthan or equal
 
-    ]
-  }
-})
-
+-`exit` for exit mongo terminal.
+ 
