@@ -1,6 +1,13 @@
 # learn-mongodb
 Learn mongodb from the basics
 
+## NoSQL(Not Only SQL)
+NoSQL is a design approch that provide a mechanism to store and access a wide verity of unstructured data in  documents and collections. NoSQL is very dynamic less memmory consuming than SQL databases. Mongodb, apache HBase, Cassandra, Redis and Neo4j are the examples of NoSQL databases.
+
+#### Features
+- No schema.
+- No Query language.
+- No Relationships.
 
 ## Mongodb
 - MongoDB is a source-available cross-platform document-oriented database program. Classified as a NonSQL database program. MongoDB used json-like documents with optional schemas.
@@ -8,6 +15,13 @@ Learn mongodb from the basics
 - Very scalable.
 - fast and lower storage space consume than SQL Databases.
 - It is very flexible, and  that's why more responsible.
+
+### Features of mongoDb
+- Indexing
+- Replication
+- Ad-hoc queries
+- Schemaless
+- Sharding
 
 ### how to install
  1. In MacOS
@@ -23,6 +37,7 @@ Learn mongodb from the basics
  - `sudo services mongodb start`
  - To enable: ` mongo`
  - use ctrl+l to clear terminal window.
+ - We can change MongoDb storage path using ``mongod --dbpath <Path>`.eg. `mongod --dbpath ~/db/data`
 
  ## Mongodb commands
  - `show dbs` : For listout all the Databases.
@@ -126,4 +141,5 @@ Learn mongodb from the basics
   $gte: greaterthan or equal
 
 -`exit` for exit mongo terminal.
+
  
