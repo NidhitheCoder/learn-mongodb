@@ -8,6 +8,25 @@ router.get('/', (req, res) => {
   res.send('courses controller');
 });
 
+router.get('/add', (req, res) => {
+  res.render('addCourse');
+});
+
+router.post('/add', (req, res) => {
+  const course = CourseModel();
+  course.courseName = req.body.courseName;
+  course.courseFee = req.body.courseFees;
+  course.courseDuration = req.body.courseDuration;
+  course.courseId = Math.ceil(Math.random() * 100000000);
+  course.save((err, doc) => {
+    if (!err) {
+      res.redirect('/course/list')
+    } else {
+      res.send('Error occured');
+    }
+  });
+});
+
 router.get('/list', (req, res) => {
   // // setting
   // let course = new CourseModel();

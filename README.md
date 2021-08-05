@@ -141,4 +141,5 @@ NoSQL is a design approch that provide a mechanism to store and access a wide ve
   $gte: greaterthan or equal
 
 -`exit` for exit mongo terminal.
+
  
